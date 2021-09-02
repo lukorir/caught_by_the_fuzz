@@ -43,6 +43,10 @@ ggplot(dt, aes(diff, variable)) +
     'x4' = 'Respiratory symptoms, no assistance at home',
     'x3' = 'Respiratory symptoms, medical assistance at home',
     'x2' = 'Went to hospital but was not put on a ventilator',
-    'x1' = 'Went to hospital and was put on a ventilator')) 
+    'x1' = 'Went to hospital and was put on a ventilator')) +
+  geom_curve(aes(x = -0.33, y = 2.3, xend = -0.38, yend = 2.7), curvature = .3, size = 0.6) +
+  geom_segment(aes(x = -0.5, xend = -0.5, y = 2.5, yend = 2.9),   color = "white", size =2) +
+  geom_segment(aes(x = -0.4, xend = -0.4, y = 2.5, yend = 2.9),   color = "white", size =2) +
+  annotate(geom = "text", x = -0.46, y = 2.75, label = "Standard error", color = "black", angle = 0, size = 5)
 ggsave('covid_19_and_cognition.png',  dpi = 100)
 # _ _ _ _ _ _ _ _ _ _  END  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
