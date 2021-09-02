@@ -17,34 +17,32 @@ dt <- data.frame(variable, diff, serr)
 # Start plotting
 ggplot(dt, aes(diff, variable)) +
   theme_bw() +
-  theme(panel.border = element_blank()) +
-  theme(panel.grid.major    = element_line(colour = "grey80", size = 1)) +
-  theme(panel.grid.minor    = element_blank()) +
-  theme(axis.title.y = element_blank(),
-        axis.title.x = element_blank(),
-        axis.text = element_text(size=12)) +
   scale_x_continuous(limits = c(-0.8, 0), breaks = seq(-0.8, 0, by = 0.1), expand = c(0, 0), position = "top") +
   geom_boxplot(fill = "white", colour = "darkred", size = 1, weight = 2) +
   geom_errorbar(aes(xmax = diff + serr, xmin = diff - serr),
                 position = "dodge", width = 0, size = 19, color = "lightblue", alpha = 0.5) +
   geom_vline(xintercept = 0, color = "red") +
-  theme(plot.caption = element_text(hjust = 0)) +
   labs(title = "Caught by the fuzz",
        subtitle = "Difference in global cognitive score relative to people who had not had covid-19, standard deviation units",
        caption = 'Source: "Cognitive deficits in people who have recovered from COVID-19", by A. Hampshire et al., EClinicalMedicine, 2021') +
-  theme(plot.title = element_text(size = 16),
+  theme(panel.border = element_blank(),
+        panel.grid.major    = element_line(colour = "grey80", size = 1),
+        panel.grid.minor    = element_blank(),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text = element_text(size = 12),
+        plot.title = element_text(size = 16),
         plot.subtitle = element_text(size = 12),
         axis.ticks = element_blank(),
         plot.caption = element_text(hjust = 0), 
         plot.title.position = "plot",
         plot.caption.position =  "plot",
         axis.text.y = element_text(size=12,hjust=0.05)) + 
-  scale_y_discrete('variable',
-                  labels = c(
-                    'x5' = 'Symptoms but without respiratory symptoms',
-                    'x4' = 'Respiratory symptoms, no assistance at home',
-                    'x3' = 'Respiratory symptoms, medical assistance at home',
-                    'x2' = 'Went to hospital but was not put on a ventilator',
-                    'x1' = 'Went to hospital and was put on a ventilator')) 
-ggsave('fuzz.png',  dpi = 100)
+  scale_y_discrete('variable', labels = c(
+    'x5' = 'Symptoms but without respiratory symptoms',
+    'x4' = 'Respiratory symptoms, no assistance at home',
+    'x3' = 'Respiratory symptoms, medical assistance at home',
+    'x2' = 'Went to hospital but was not put on a ventilator',
+    'x1' = 'Went to hospital and was put on a ventilator')) 
+ggsave('covid_19_and_cognition.png',  dpi = 100)
 # _ _ _ _ _ _ _ _ _ _  END  _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
