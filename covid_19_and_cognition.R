@@ -25,7 +25,7 @@ ggplot(dt, aes(diff, variable)) +
   geom_vline(xintercept = 0, color = "red") +
   labs(title = "Caught by the fuzz",
        subtitle = "Difference in global cognitive score relative to people who had not had covid-19, standard deviation units",
-       caption = 'Source: "Cognitive deficits in people who have recovered from COVID-19", by A. Hampshire et al., EClinicalMedicine, 2021') +
+       caption = 'Source: "Cognitive deficits in people who have recovered from COVID-19", by A. Hampshire et al., EClinicalMedicine, 2021\n@lukorir') +
   theme(panel.border = element_blank(),
         panel.grid.major    = element_line(colour = "grey80", size = 1),
         panel.grid.minor    = element_blank(),
