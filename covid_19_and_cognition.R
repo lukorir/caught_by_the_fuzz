@@ -17,7 +17,8 @@ dt <- data.frame(variable, diff, serr)
 # Start plotting
 ggplot(dt, aes(diff, variable)) +
   theme_bw() +
-  scale_x_continuous(limits = c(-0.8, 0), breaks = seq(-0.8, 0, by = 0.1), expand = c(0, 0), position = "top") +
+  scale_x_continuous(limits = c(-0.8, 0), breaks = seq(-0.8, 0, by = 0.1), expand = c(0, 0), position = "top", 
+                     labels = c("-0.8","-0.7","-0.6","-0.5","-0.4","-0.3", "-0.2", "-0.1", "0" )) +
   geom_boxplot(fill = "white", colour = "darkred", size = 1, weight = 2) +
   geom_errorbar(aes(xmax = diff + serr, xmin = diff - serr),
                 position = "dodge", width = 0, size = 19, color = "lightblue", alpha = 0.5) +
@@ -37,14 +38,14 @@ ggplot(dt, aes(diff, variable)) +
         plot.caption = element_text(hjust = 0), 
         plot.title.position = "plot",
         plot.caption.position =  "plot",
-        axis.text.y = element_text(size=12,hjust=0.05)) + 
+        axis.text.y = element_text(size = 12, hjust = 0.05)) + 
   scale_y_discrete('variable', labels = c(
     'x5' = 'Symptoms but without respiratory symptoms',
     'x4' = 'Respiratory symptoms, no assistance at home',
     'x3' = 'Respiratory symptoms, medical assistance at home',
     'x2' = 'Went to hospital but was not put on a ventilator',
     'x1' = 'Went to hospital and was put on a ventilator')) +
-  geom_curve(aes(x = -0.33, y = 2.3, xend = -0.38, yend = 2.7), curvature = .3, size = 0.6) +
+  geom_curve(aes(x = -0.38, y = 2.7, xend = -0.33, yend = 2.3), curvature = -.3, size = 0.6, arrow = arrow(type = "closed", length = unit(dt$serr, "cm"))) +
   geom_segment(aes(x = -0.5, xend = -0.5, y = 2.5, yend = 2.9),   color = "white", size =2) +
   geom_segment(aes(x = -0.4, xend = -0.4, y = 2.5, yend = 2.9),   color = "white", size =2) +
   annotate(geom = "text", x = -0.46, y = 2.75, label = "Standard error", color = "black", angle = 0)
