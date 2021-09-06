@@ -21,7 +21,7 @@ ggplot(dt, aes(diff, variable)) +
                      labels = c("-0.8","-0.7","-0.6","-0.5","-0.4","-0.3", "-0.2", "-0.1", "0" )) +
   geom_boxplot(fill = "white", colour = "darkred", size = 1, weight = 2) +
   geom_errorbar(aes(xmax = diff + serr, xmin = diff - serr),
-                position = "dodge", width = 0, size = 19, color = "lightblue", alpha = 0.5) +
+                position = "dodge", width = 0, size = 17, color = "lightblue", alpha = 0.5) +
   geom_vline(xintercept = 0, color = "red") +
   labs(title = "Caught by the fuzz",
        subtitle = "Difference in global cognitive score relative to people who had not had covid-19, standard deviation units",
